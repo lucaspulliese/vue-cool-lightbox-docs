@@ -1,0 +1,48 @@
+:root {
+  // fonts
+  --main-font: 'Source Sans Pro', sans-serif;
+
+  // colors
+  --color-text: #304455;
+  --color-primary: #42b983;
+  --color-white: #FFFFFF;
+  --color-gray: #8E8E8E;
+  --color-gray-light: #fafafa;
+  --color-gray-2: #F5F5F5;
+
+  // colors bg
+  --color-bg-gray: #F3F4F5;
+
+  // globals
+  --border-radius: 5px;
+  --color-border: #707070;
+  --shadow-1: 0px 0px 4px rgba(0,0,0,0.16);
+}
+
+@mixin inputPlaceholder() {
+  $selector: '';
+  $prefixes: (
+      moz: "::-moz",
+      webkit: "::-webkit",
+      ie: ":-ms"
+  );
+  @each $prop, $value in $prefixes {
+      @if $prop != "moz" {
+          $selector: #{$value}-input-placeholder;
+      } @else {
+          $selector: #{$value}-placeholder;
+      }
+      @if & {
+          &#{$selector} {
+              @content;
+          }
+      } @else {
+          #{$selector} {
+              @content;
+          }
+      }
+  }
+  &::placeholder {
+    @content;
+  }
+}

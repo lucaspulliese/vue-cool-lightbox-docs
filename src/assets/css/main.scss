@@ -1,0 +1,462 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&display=swap');
+@import 'partials/breakpoints.scss';
+@import 'partials/reset.css';
+@import 'partials/variables.scss';
+
+body {
+  overflow-x:hidden;
+}
+
+body {
+  height: 100%;
+}
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: white;
+  font-weight: 400;
+  font-family: var(--main-font);
+  color: var(--color-text);
+  &.body--hero {
+    padding-top: 0;
+  }
+  &.header--nav-open {
+    .header {
+      &:after {
+        opacity: 0.7;
+      }
+    }
+    .header__nav-wrapper {
+      right: 0;
+      z-index: 60;
+    }
+  }
+}
+
+span {
+  font-weight: 100;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+input, textarea, button, select {
+  border: none;
+  background: none;
+  outline: none;
+  border-radius: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 380px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  @include breakpoint(phone) {
+    max-width: 780px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @include breakpoint(tablet-lg) {
+    max-width: 1124px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @include breakpoint(desktop-lg) {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.header {
+  height: 150px;
+  color: #FFF;
+  position: relative;
+  text-align: center;
+  background: var(--color-primary);
+  @include breakpoint(phone) {
+    height: 300px;
+  }
+  .header__icon {
+    height: 50px;
+    @include breakpoint(phone) {
+      height: 100px;
+    }
+  }
+  .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h1 {
+      font-weight: 500;
+      font-size: 24px;
+      font-weight: 500;
+      @include breakpoint(phone) {
+        font-size: 40px;
+      }
+    }
+  }
+}
+
+.main-page {
+  padding: 36px 0 50px 0;
+  @include breakpoint(phone) {
+    padding: 80px 0;
+  }
+  .container {
+    @include breakpoint(phone) {
+      display: flex;
+      align-items: flex-start;
+    }
+    .sidebar {      
+      display: none;
+      @include breakpoint(phone) {
+        width: 157px;
+        display: block;
+        overflow: auto;
+        max-height: 90vh;
+        margin-right: 30px;
+      }
+      @include breakpoint(tablet-lg) {
+        width: 250px;
+      }
+    }
+    .main {
+      margin-left: auto;
+      @include breakpoint(phone) {
+        width: 75%;
+      }
+    }
+  }
+}
+
+.sidebar {
+  .sidebar__version {
+    margin-bottom: 23px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ececec;
+    a {
+      padding: 5px;
+      display: block;
+      color: black;
+      font-size: 20px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .sidebar__block {
+    margin-bottom: 35px;
+  }
+  .sidebar__title {
+    font-size: 22px;
+    color: #273849;
+    margin-bottom: 16px;
+  }
+  .sidebar__list {
+    > li {
+      margin-bottom: 15px;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+      a {
+        font-size: 17px;
+        &:hover {
+          text-decoration-color: var(--color-primary);
+          text-decoration: underline;
+        }
+      }
+      > ul {
+        margin-top: 15px;
+        margin-left: 9px;
+        li {
+          margin-bottom: 10px;
+          &:last-of-type {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.block {
+  &:first-of-type {
+    .block__intro {
+      margin-top: 0;
+    }
+  }
+  .block__intro {
+    font-size: 26px;
+    margin-top: 50px;
+    padding-bottom: 22px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid #ddd;
+    @include breakpoint(phone) {
+      font-size: 32px;
+      margin-top: 70px;
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+    }
+    h2 {
+      font-weight: 500;
+    }
+  }
+  .block__content {
+    ul {
+      margin-top: 45px;
+      li {
+        font-size: 18px;
+        padding-left: 15px;
+        position: relative;
+        margin-bottom: 20px;
+        &:before {
+          content: '';
+          width: 6px;
+          height: 6px;
+          left: -4px;
+          top: 6px;
+          position: absolute;
+          background-color: #000;
+          border-radius: 100%;
+        }
+      }
+    }
+    &.intro {
+      margin-bottom: -13px;
+      br {
+        display: none;
+        @include breakpoint(phone) {
+          display: block;
+        }
+      }
+      h2 {
+        font-weight: 500;
+        font-size: 39px;
+        margin-bottom: 30px;
+      }
+      p {
+        font-size: 17px;
+        line-height: 140%;
+        @include breakpoint(phone) {
+          font-size: 21px;
+          line-height: 150%;
+        }
+      }
+    }
+    h1,h2,h3,h4,h5,h6 {
+      font-weight: 500;
+      line-height: 130%;
+    }
+    h3 {
+      margin-top: 30px;
+      margin-bottom: 23px;
+      font-size: 23px;
+      @include breakpoint(phone) {
+        margin-top: 45px;
+        font-size: 29px;
+      }
+    }
+    > p {
+      font-size: 16px;
+      margin-bottom: 13px;
+      font-weight: 300;
+      line-height: 132%;
+      @include breakpoint(phone) {
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+      strong {
+        font-weight: 700;
+      }
+    }
+    a {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+    h4 {
+      font-size: 20px;
+      margin-top: 25px;
+      margin-bottom: 12px;
+      @include breakpoint(phone) {
+        font-size: 23px;
+        margin-top: 28px;
+        margin-bottom: 15px;
+      }
+    }
+    pre.no-break {
+      white-space: normal;
+    }
+  }
+}
+
+.block-code__code {
+  font-size: 14px;
+  @include breakpoint(phone) {
+    font-size: 1em;
+  }
+  pre {
+    margin-top: 0!important;
+  }
+}
+
+code[class*="language-"], pre[class*="language-"] {
+  font-size: 14px!important;
+  pre {
+    margin-top: 0!important;
+  }
+}
+
+.block-code {
+  margin-bottom: 50px;
+  @include breakpoint(phone) {
+  }
+  .block-code__example {
+    @include breakpoint(phone) {
+      width: auto;
+    }
+  }
+  .block-code__code {
+    @include breakpoint(phone) {
+      width: 100%;
+    }
+    pre {
+      overflow: scroll;
+      max-height: 400px;
+    }
+  }
+}
+
+.images-wrapper {
+  display: flex;
+  margin-right: -10px;
+  @include breakpoint(phone) {
+    margin-right: -20px;
+  }
+  .image-wrapper {
+    margin-bottom: 10px;
+    width: calc(100%/2 - 10px);
+    margin-right: 10px;
+    @include breakpoint(phone) {
+      margin-bottom: 20px;
+      width: calc(100%/6 - 20px);
+      margin-right: 20px;
+    }
+    .image {
+      cursor: pointer;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding-top: 100%;
+    }
+  }
+}
+
+.under-construction {
+  display: block;
+  padding: 10px;
+  font-size: 15px;
+  color: #fff;
+  font-weight: 600;
+  position: fixed;
+  left: 0;
+  z-index: 1000;
+  bottom: 50px;
+  border-radius: 0 5px 5px 0;
+  background: var(--color-primary);
+  @include breakpoint(phone) {
+    font-size: 20px;
+    padding: 20px;
+  }
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.table {
+  table-layout: fixed;
+  width: 780px;
+  @include breakpoint(phone) {
+    width: 100%;
+  }
+  th, td {
+    vertical-align: middle;
+    padding: 18px 14px;
+    font-size: 15px;
+    text-align: left;
+    line-height: 120%;
+    @include breakpoint(phone) {
+      padding: 22px 16px;
+      font-size: 16px;
+    }
+  }
+  thead {
+    border-bottom: 1px solid #ddd;
+  }
+  tbody {
+    tr {
+      border-bottom: 1px solid #ddd;
+      &:nth-of-type(odd) {
+        background: #f9f9f9;
+      }
+      td {
+        &:first-of-type {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.button-donate {
+  background: #e1de14;
+  color: #374853;
+  border-radius: 3px;
+  font-size: 14px;
+  min-width: 130px;
+  display: inline-block;
+  padding: 9px 18px;
+  margin-top: 18px;
+  margin-left: 10px;
+  @include breakpoint(phone) {
+    margin-top: 30px;
+    padding: 15px 25px;
+    font-size: 16px;
+  }
+}
+
+.button-github {
+  background: #374853;
+  color: white;
+  border-radius: 3px;
+  font-size: 14px;
+  min-width: 130px;
+  display: inline-block;
+  padding: 9px 18px;
+  margin-top: 18px;
+  @include breakpoint(phone) {
+    margin-top: 30px;
+    padding: 15px 25px;
+    font-size: 16px;
+  }
+}
